@@ -19,6 +19,18 @@ namespace Cqs.SampleApp.Core.Cqs
             Log = LogManager.GetLogger(GetType().FullName);
         }
 
+        /* A more "production worthy" CommandHandler would have a constructor like this:
+           ICommandValidator<TRequest> => perform data validation
+           IMapperEngine => transform Entity Objects to Data Transfer Objects.
+           IUnitOfWork => handles transactions, scopes and different contexts. */
+
+        //protected CommandHandler(ICommandValidator<TRequest> validator, IMapperEngine mapperEngine, IUnitOfWork unitOfWork)
+        //{
+        //    MapperEngine = mapperEngine;
+        //    UnitOfWork = unitOfWork;
+        //    _Validator = validator;
+        //    _Log = LogManager.GetLogger(GetType().FullName);
+        //}
 
         public TResult Handle(TRequest command)
         {
