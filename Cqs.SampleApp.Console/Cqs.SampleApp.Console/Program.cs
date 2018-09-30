@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Cqs.SampleApp.Console.Infrastructure;
 using Cqs.SampleApp.Console.Requests.Commands;
 using Cqs.SampleApp.Console.Requests.Queries.Books;
@@ -20,15 +17,10 @@ namespace Cqs.SampleApp.Console
         
         private static void Main(string[] args)
         {
-
             _Log.Info("Bootsrapping application..");
-
             var _container = Bootstrapper.Bootstrap();
-
-            //WithoutCqs(_container);
-
-            WithCqs(_container);
-
+            WithoutCqs(_container);
+            //WithCqs(_container);
             System.Console.ReadLine();
         }
 
@@ -81,7 +73,6 @@ namespace Cqs.SampleApp.Console
 
         private static void WithoutCqs(IAutofacContainer container)
         {
-
             //resolve context
             var _context = container.Resolve<ApplicationDbContext>();
             

@@ -4,7 +4,10 @@ using Cqs.SampleApp.Core.Cqs.Data;
 
 namespace Cqs.SampleApp.Core.Cqs
 {
-    /// <inheritdoc />
+    /// <summary>
+    /// Dispatcher replaces the gigantic switches. Resolving happens with Dependency Injection.
+    /// Create, Update and Delete commands
+    /// </summary>
     public class CommandDispatcher : ICommandDispatcher
     {
         private readonly IComponentContext _Context;
@@ -13,11 +16,10 @@ namespace Cqs.SampleApp.Core.Cqs
         {
             _Context = context ?? throw new ArgumentNullException(nameof(context));
         }
-
+        
         public TResult Dispatch<TParameter, TResult>(TParameter command) where TParameter : ICommand where TResult : IResult
         {
             //Look up the correct CommandHandler in our IoC container and invoke the Handle method
-
             var _handler = _Context.Resolve<ICommandHandler<TParameter, TResult>>();
             return _handler.Handle(command);
         }

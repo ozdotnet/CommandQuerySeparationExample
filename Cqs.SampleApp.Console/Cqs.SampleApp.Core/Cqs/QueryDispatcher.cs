@@ -5,6 +5,10 @@ using log4net;
 
 namespace Cqs.SampleApp.Core.Cqs
 {
+    /// <summary>
+    /// Dispatcher replaces the gigantic switches. Resolving happens with Dependency Injection.
+    /// Read Queries
+    /// </summary>
     public class QueryDispatcher : IQueryDispatcher
     {
         private readonly IComponentContext _Context;
